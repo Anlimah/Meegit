@@ -11,7 +11,7 @@ app.post('/webhook', express.json({type: 'application/json'}), (req, res) => {
 
   console.log(`Received GitHub event: ${event}`);
 
-  // Handle different GitHub events here
+  // Handle different GitHub events here 
   switch (event) {
     case 'ping':
         handlePingEvent(payload);
@@ -24,10 +24,11 @@ app.post('/webhook', express.json({type: 'application/json'}), (req, res) => {
     case 'issues':
         handleIssuesEvent(payload);
         break;
-        
+
     // Add more cases for other events as needed
     default:
-      break;
+        console.log('Issues event received:', payload);
+        break;
   }
 
   res.status(200).send('Webhook received successfully');
